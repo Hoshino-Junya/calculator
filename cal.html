@@ -1,82 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>簡単な電卓アプリ</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f4f4f9;
-    }
-
-    .calculator {
-      width: 300px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .display {
-      width: 100%;
-      height: 50px;
-      margin-bottom: 20px;
-      font-size: 1.5rem;
-      text-align: right;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background-color: #f9f9f9;
-    }
-
-    .buttons {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-    }
-
-    .button {
-      padding: 15px;
-      font-size: 1.2rem;
-      text-align: center;
-      border: none;
-      border-radius: 5px;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.2s;
-    }
-
-    .button:hover {
-      background-color: #0056b3;
-    }
-
-    .button.clear {
-      background-color: #dc3545;
-    }
-
-    .button.clear:hover {
-      background-color: #a71d2a;
-    }
-
-    .button.equals {
-      background-color: #28a745;
-      grid-column: span 2;
-    }
-
-    .button.equals:hover {
-      background-color: #1e7e34;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
   <div class="calculator">
     <input type="text" class="display" id="display" disabled>
@@ -104,40 +33,6 @@
       <button class="button clear" onclick="clearDisplay()">C</button>
     </div>
   </div>
-
-  <script>
-    const display = document.getElementById('display');
-
-    // 数字を追加
-    function appendNumber(number) {
-      display.value += number;
-    }
-
-    // 演算子を追加
-    function appendOperator(operator) {
-      // 最後が演算子の場合、上書きしないようにする
-      const lastChar = display.value.slice(-1);
-      if (['+', '-', '*', '/'].includes(lastChar)) {
-        return;
-      }
-      display.value += operator;
-    }
-
-    // 計算を実行
-    function calculate() {
-      try {
-        // eval関数を使用して計算
-        display.value = eval(display.value);
-      } catch (error) {
-        display.value = 'エラー';
-      }
-    }
-
-    // 表示をクリア
-    function clearDisplay() {
-      display.value = '';
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
-
 </html>
